@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Point
   - Ghost
+  - Hide
+  - Dead
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - 
   - Ghost
   - Obstacle
-  - 
-  - 
-  - 
+  - Person
+  - Hide
+  - Floor
   - 
   - 
   - 

@@ -6,7 +6,6 @@ public class Possessing : MonoBehaviour
 {
     public float radius = 3.0f;
     public LayerMask hide;
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Q))
@@ -17,7 +16,6 @@ public class Possessing : MonoBehaviour
     private void Nearby(Vector3 center)
     {
         //create array of all objects within certain distance
-        Debug.Log("called");
         Collider[] objects = Physics.OverlapSphere(center, radius, hide);
         Hide(objects[0]);
     }
@@ -27,7 +25,6 @@ public class Possessing : MonoBehaviour
         Camera.main.transform.position = new Vector3(c.transform.position.x, Camera.main.transform.position.y, c.transform.position.z);
         c.gameObject.GetComponent<Possession>().enabled = true;
         c.gameObject.GetComponent<Possession>().height = transform.position.y;
-        Debug.Log(c.gameObject.name);
         Destroy(gameObject);
     }
 }

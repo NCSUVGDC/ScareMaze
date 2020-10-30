@@ -58,8 +58,4 @@ public class Movement : MonoBehaviour
         //move camera with player
         Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
 }

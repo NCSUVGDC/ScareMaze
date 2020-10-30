@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Code;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ public class Possession : MonoBehaviour
         {
             case PossessionType.scarecrow:
             {
+                    //scary lean
                     Vector3 forward = transform.forward;
                     if (Input.GetKey(KeyCode.E))
                     {
@@ -45,7 +47,7 @@ public class Possession : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            //create new player and deactivate code
+            //jump out of object, scare NPC, instantiate new player
             Instantiate(player,new Vector3(transform.position.x+transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);
             Identify();
             Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
@@ -54,6 +56,7 @@ public class Possession : MonoBehaviour
     }
     void Identify()
     {
+        //find all NPC objects within the radius then verify there is not a wall between you and them
         objects = Physics.OverlapSphere(transform.position, radius, NPC);
         foreach (Collider c in objects)
         {
@@ -70,9 +73,17 @@ public class Possession : MonoBehaviour
     }
     void Kill(Collider c)
     {
-        c.transform.rotation = Quaternion.Euler(90, 0, 0);
-        c.gameObject.tag = "Dead";
-        c.gameObject.layer = 9;
-        c.gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
+        Destroy(c.gameObject);
+        //c.gameObject.GetComponent<Person>().enabled = false;
+        //c.gameObject.GetComponent<PersonSight>().enabled = false;
+        //c.transform.rotation = Quaternion.Euler(90, 0, 0);
+        //c.gameObject.tag = "Dead";
+        //c.gameObject.layer = 9;
+        //c.gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
+    }
+    private void OnDrawGizmos()
+    {
+        //shows scare distance
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

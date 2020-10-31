@@ -1,6 +1,7 @@
 ﻿using Assets.Code;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Possession : MonoBehaviour
@@ -74,6 +75,8 @@ public class Possession : MonoBehaviour
     void Kill(Collider c)
     {
         Destroy(c.gameObject);
+        // Decrease counter of AI players
+        FindObjectOfType<GameManager>().PlayerDeath();
         //c.gameObject.GetComponent<Person>().enabled = false;
         //c.gameObject.GetComponent<PersonSight>().enabled = false;
         //c.transform.rotation = Quaternion.Euler(90, 0, 0);

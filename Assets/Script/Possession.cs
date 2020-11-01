@@ -35,7 +35,7 @@ public class Possession : MonoBehaviour
             {
                     //scary lean
                     Vector3 forward = transform.forward;
-                    if (Input.GetKey(KeyCode.E))
+                    if (Input.GetKeyUp(KeyCode.E))
                     {
                         transform.rotation = Quaternion.Euler(25, transform.rotation.eulerAngles.y, 0);
                         Identify();
@@ -48,7 +48,7 @@ public class Possession : MonoBehaviour
             }
             default: break;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             //jump out of object, scare NPC, instantiate new player
             Instantiate(player,new Vector3(transform.position.x+transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Possession : MonoBehaviour
 {
+    private Person person;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,9 +76,12 @@ public class Possession : MonoBehaviour
     }
     void Kill(Collider c)
     {
-        Destroy(c.gameObject);
+        // Run "Death" Function
+        c.gameObject.GetComponent<Person>().Death();
+
         // Decrease counter of AI players
         FindObjectOfType<GameManager>().PlayerDeath();
+
         //c.gameObject.GetComponent<Person>().enabled = false;
         //c.gameObject.GetComponent<PersonSight>().enabled = false;
         //c.transform.rotation = Quaternion.Euler(90, 0, 0);

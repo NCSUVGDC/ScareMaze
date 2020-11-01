@@ -35,6 +35,8 @@ namespace Assets.Code
         float waitTimer;
         int pointsVisited;
 
+        private Animator animator;
+
         [Header("Detection")]
         public DetectionBar detectionBar;
         [HideInInspector]
@@ -45,6 +47,10 @@ namespace Assets.Code
         {
             agent = this.GetComponent<NavMeshAgent>();
             personSight = this.GetComponent<PersonSight>();
+            animator = this.GetComponent<Animator>();
+
+            setRigidbodyState(true);
+            setColliderState(false);
 
             if(currentWaypoint == null)
             {
@@ -77,6 +83,10 @@ namespace Assets.Code
 
         private void Update()
         {
+            // Animations
+            animator.SetFloat("movementSpeed", agent.velocity.magnitude);
+            animator.SetBool("ghostSpotted", agent.isStopped);
+
             if (!personSight.ghostSpotted)
             {
                 agent.isStopped = false;
@@ -151,6 +161,44 @@ namespace Assets.Code
             Vector3 targetVector = currentWaypoint.transform.position;
             agent.SetDestination(targetVector);
             traveling = true;
+        }
+
+        public void Death()
+        {
+            Debug.Log("Scared!! ");
+
+            Destroy(gameObject, 5);
+            agent.enabled = false;
+
+            // Disable animations
+            animator.enabled = false;
+
+            // Ragdoll
+            setRigidbodyState(false);
+            setColliderState(true);
+        }
+
+        void setRigidbodyState(bool state)
+        {
+            Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
+
+            foreach(Rigidbody rigidbody in rigidbodies)
+            {
+                rigidbody.isKinematic = state;
+            }
+
+        }
+
+        void setColliderState(bool state)
+        {
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+
+            foreach (Collider collider in colliders)
+            {
+                collider.enabled = state;
+            }
+
+            GetComponent<Collider>().enabled = !state;
         }
     }
 }

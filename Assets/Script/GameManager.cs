@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     
     bool hasGameEnded = false;
     public float restartDelay = 7f;
-    private int playersNum = 1;
-    private int playersAlive = 1;
+    public int playersNum = 3;
+    public int playersAlive = 3;
  
     
     // Update is called once per frame

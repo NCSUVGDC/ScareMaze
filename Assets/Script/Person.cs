@@ -24,6 +24,9 @@ namespace Assets.Code
         [SerializeField]
         List<Point> patrolPoints = null;
 
+        public AudioSource audioSource;
+        public List<AudioClip> clips;
+
         // Private variables for behaviour
         NavMeshAgent agent;
         ConnectedWaypoint currentWaypoint;
@@ -178,6 +181,9 @@ namespace Assets.Code
             // Ragdoll
             setRigidbodyState(false);
             setColliderState(true);
+            int i = Random.Range(0, clips.Count);
+            audioSource.clip = clips[i];
+            audioSource.Play();
         }
 
         void setRigidbodyState(bool state)

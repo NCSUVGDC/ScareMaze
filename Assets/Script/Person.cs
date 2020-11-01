@@ -49,6 +49,8 @@ namespace Assets.Code
             personSight = this.GetComponent<PersonSight>();
             animator = this.GetComponent<Animator>();
 
+            agent.enabled = true;
+
             setRigidbodyState(true);
             setColliderState(false);
 
@@ -167,7 +169,7 @@ namespace Assets.Code
         {
             Debug.Log("Scared!! ");
 
-            Destroy(gameObject, 5);
+            Destroy(gameObject, 3);
             agent.enabled = false;
 
             // Disable animations

@@ -11137,6 +11137,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02351671, y: 0.060000002, z: 0.073854536}
   m_Center: {x: -0.00024579384, y: 7.740302e-10, z: 0.026927304}
+--- !u!114 &926773617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4682108993234864526, guid: 940c61a6ab7ece74882c747cfe730bc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212913047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ef7c38c35f8d64491a2468296e1382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &928425456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12107,6 +12119,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000020256266
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: ghostDamage
+      value: 
+      objectReference: {fileID: 926773617}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: lightDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2443378163739583451, guid: 28ad65ec7d45654489de186054cb3bef,
         type: 3}
@@ -13155,6 +13177,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: 0.035565868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: ghostDamage
+      value: 
+      objectReference: {fileID: 926773617}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: lightDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2443378163739583451, guid: 28ad65ec7d45654489de186054cb3bef,
         type: 3}
@@ -23277,6 +23309,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.035565864
       objectReference: {fileID: 0}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: ghostDamage
+      value: 
+      objectReference: {fileID: 926773617}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: lightDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2443378163739583451, guid: 28ad65ec7d45654489de186054cb3bef,
         type: 3}
       propertyPath: m_Name
@@ -26073,6 +26115,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000020256266
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: ghostDamage
+      value: 
+      objectReference: {fileID: 926773617}
+    - target: {fileID: 2443378163681157431, guid: 28ad65ec7d45654489de186054cb3bef,
+        type: 3}
+      propertyPath: lightDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2443378163739583451, guid: 28ad65ec7d45654489de186054cb3bef,
         type: 3}

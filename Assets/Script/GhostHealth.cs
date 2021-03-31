@@ -29,6 +29,7 @@ public class GhostHealth : MonoBehaviour
             {
                 print("ghost dead");
                 Destroy(gameObject);
+                FindObjectOfType<GameManager>().LoseGame();
             }
             lastHitTime = Time.time;
         }

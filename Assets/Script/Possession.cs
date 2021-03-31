@@ -51,6 +51,10 @@ public class Possession : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             //jump out of object, scare NPC, instantiate new player
+            if (type.Equals(PossessionType.scarecrow))
+            {
+                gameObject.GetComponent<Movement>().enabled = false;
+            }
             Instantiate(player,new Vector3(transform.position.x+transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);
             Identify();
             Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);

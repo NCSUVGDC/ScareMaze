@@ -18694,6 +18694,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scarecrow
       objectReference: {fileID: 0}
+    - target: {fileID: 6917259603935799748, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1700c4a657891d645942b4d3b4fd1d3f, type: 3}
 --- !u!1 &1544837180 stripped

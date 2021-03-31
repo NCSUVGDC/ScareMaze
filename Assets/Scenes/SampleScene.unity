@@ -516,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 93807621032717379, guid: 1700c4a657891d645942b4d3b4fd1d3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94436216
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 93807621032717379, guid: 1700c4a657891d645942b4d3b4fd1d3f,
         type: 3}
@@ -563,10 +563,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 93807621032717383, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 93807621032717385, guid: 1700c4a657891d645942b4d3b4fd1d3f,
         type: 3}
       propertyPath: m_Name
       value: Scarecrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917259603935799748, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1700c4a657891d645942b4d3b4fd1d3f, type: 3}
@@ -939,6 +949,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 7
+  playersNum: 3
+  playersAlive: 3
 --- !u!4 &1887392654
 Transform:
   m_ObjectHideFlags: 0

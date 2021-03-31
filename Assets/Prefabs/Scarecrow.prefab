@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 93807621032717382}
   - component: {fileID: 93807621032717383}
   - component: {fileID: 93807621032717384}
+  - component: {fileID: 6917259603935799748}
   m_Layer: 11
   m_Name: Scarecrow
   m_TagString: Hide
@@ -112,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &93807621032717384
 MonoBehaviour:
@@ -136,6 +137,24 @@ MonoBehaviour:
   radius: 3
   player: {fileID: 4682108993330693435, guid: 940c61a6ab7ece74882c747cfe730bc0, type: 3}
   height: 0
+--- !u!114 &6917259603935799748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93807621032717385}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89daeee52615d74597488d5fd99b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 93807621032717383}
+  speed: 5
+  radius: 3
+  hide:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &93807621593289341
 GameObject:
   m_ObjectHideFlags: 0

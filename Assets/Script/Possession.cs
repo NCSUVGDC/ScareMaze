@@ -26,7 +26,7 @@ public class Possession : MonoBehaviour
     public GameObject player;
     public float height;
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         switch (type)

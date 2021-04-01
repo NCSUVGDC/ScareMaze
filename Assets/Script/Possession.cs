@@ -7,11 +7,15 @@ using UnityEngine;
 public class Possession : MonoBehaviour
 {
     private Person person;
-
+    public float timeLimit = 30.0f;
+    float possessionTime = 0f;
+    Vector3 startpos;
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Possession>().enabled = false;
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        startpos = transform.position;
     }
     public enum PossessionType
     {
@@ -28,38 +32,29 @@ public class Possession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (type.Equals(PossessionType.scarecrow))
+        {
+            possessionTime += Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) || possessionTime >= timeLimit)
+        {
+            Exit();
+        }
+    }
+    void Exit()
+    {
+        //jump out of object, scare NPC, instantiate new player
+        if (type.Equals(PossessionType.scarecrow))
+        {
+            gameObject.GetComponent<Movement>().enabled = false;
+        }
+        Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);
+        Identify();
+        Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
+        this.enabled = false;
+        possessionTime = 0f;
+        transform.position = startpos;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        switch (type)
-        {
-            case PossessionType.scarecrow:
-            {
-                    //scary lean
-                    Vector3 forward = transform.forward;
-                    if (Input.GetKeyUp(KeyCode.E))
-                    {
-                        transform.rotation = Quaternion.Euler(25, transform.rotation.eulerAngles.y, 0);
-                        Identify();
-                    }
-                    break;
-            }
-            case PossessionType.pumpkin:
-            {
-                    break;
-            }
-            default: break;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            //jump out of object, scare NPC, instantiate new player
-            if (type.Equals(PossessionType.scarecrow))
-            {
-                gameObject.GetComponent<Movement>().enabled = false;
-            }
-            Instantiate(player,new Vector3(transform.position.x+transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);
-            Identify();
-            Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
-            gameObject.GetComponent<Possession>().enabled = false;
-        }
     }
     void Identify()
     {

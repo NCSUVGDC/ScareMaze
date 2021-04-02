@@ -217,6 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba25580bf1133243911f3d5b773338e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 30
+  hide:
+    serializedVersion: 2
+    m_Bits: 2048
   type: 0
   NPC:
     serializedVersion: 2

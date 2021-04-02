@@ -6,6 +6,7 @@ public class Possessing : MonoBehaviour
 {
     public float radius = 3.0f;
     public LayerMask hide;
+    public LayerMask player;
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Q))
@@ -29,6 +30,7 @@ public class Possessing : MonoBehaviour
         Possession possession = c.gameObject.GetComponent<Possession>();
         possession.enabled = true;
         possession.height = transform.position.y;
+        c.gameObject.layer = 10;
         if (possession.type == Possession.PossessionType.scarecrow)
         {
             c.gameObject.GetComponent<Movement>().enabled = true;

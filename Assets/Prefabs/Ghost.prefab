@@ -276,6 +276,9 @@ MonoBehaviour:
   hide:
     serializedVersion: 2
     m_Bits: 2048
+  player:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!54 &4682108993330693432
 Rigidbody:
   m_ObjectHideFlags: 0

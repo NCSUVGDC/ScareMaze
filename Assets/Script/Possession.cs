@@ -10,6 +10,7 @@ public class Possession : MonoBehaviour
     public float timeLimit = 30.0f;
     float possessionTime = 0f;
     Vector3 startpos;
+    public LayerMask hide;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,7 @@ public class Possession : MonoBehaviour
         possessionTime = 0f;
         transform.position = startpos;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        gameObject.layer = hide;
     }
     void Identify()
     {

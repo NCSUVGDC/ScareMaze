@@ -10,6 +10,7 @@ public class PersonSight : MonoBehaviour
     [Range(0,360)]
     public float viewAngle;
     public bool ghostSpotted;
+    public bool scarecrowSpotted;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
@@ -47,10 +48,11 @@ public class PersonSight : MonoBehaviour
                 float disToTarget = Vector3.Distance(transform.position, target.position);
                 // Use Raycast to find obstacles in the way
                 if (!Physics.Raycast(transform.position, dirToTarget, disToTarget, obstacleMask))
-                {  
+                {                    
                     // No obstacles in way, Ghost spotted!
                     targetLastLocation = target.transform;
-                    ghostSpotted = true;
+                    scarecrowSpotted = target.parent.name.Equals("Scarecrow");
+                    ghostSpotted = !scarecrowSpotted;
                 }
             }
         }

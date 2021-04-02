@@ -37,6 +37,7 @@ namespace Assets.Code
         bool waiting;
         float waitTimer;
         int pointsVisited;
+        bool running;
 
         private Animator animator;
 
@@ -92,7 +93,7 @@ namespace Assets.Code
             animator.SetFloat("movementSpeed", agent.velocity.magnitude);
             animator.SetBool("ghostSpotted", agent.isStopped);
 
-            if (!personSight.ghostSpotted)
+            if (!personSight.ghostSpotted && !personSight.scarecrowSpotted && !running)
             {
                 agent.isStopped = false;
                 lastLocation = null;
@@ -128,12 +129,20 @@ namespace Assets.Code
                     }
                 }
             }
-            else
+            else if (personSight.ghostSpotted)
             {
                 GhostSeen();
             }
+            else
+            {
+                ScarecrowSeen();
+            }
         }
 
+        void ScarecrowSeen()
+        {
+            //run away from Player
+        }
         public void GhostSeen()
         {
             //Toggle movement

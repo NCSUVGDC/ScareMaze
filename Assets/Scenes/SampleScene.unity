@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &464697621
 Transform:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8dbca35727bee8e4788088dc1fb21e80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,7 +456,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8dbca35727bee8e4788088dc1fb21e80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,7 +494,7 @@ Transform:
   m_GameObject: {fileID: 856102989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1478894058}
   - {fileID: 784310252}
@@ -563,6 +563,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 93807621032717381, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93807621032717381, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 787f30047edf49f45b0a02d73c493909, type: 2}
+    - target: {fileID: 93807621032717381, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3decbb72dc92a1e48bdae5d35082b6ef, type: 2}
+    - target: {fileID: 93807621032717381, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 787f30047edf49f45b0a02d73c493909, type: 2}
+    - target: {fileID: 93807621032717381, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 787f30047edf49f45b0a02d73c493909, type: 2}
     - target: {fileID: 93807621032717383, guid: 1700c4a657891d645942b4d3b4fd1d3f,
         type: 3}
       propertyPath: m_Constraints
@@ -731,7 +756,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8dbca35727bee8e4788088dc1fb21e80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -951,6 +976,10 @@ MonoBehaviour:
   restartDelay: 7
   playersNum: 3
   playersAlive: 3
+  paused: 0
+  pauseCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  gameOverText: {fileID: 0}
 --- !u!4 &1887392654
 Transform:
   m_ObjectHideFlags: 0

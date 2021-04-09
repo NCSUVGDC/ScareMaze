@@ -21,7 +21,6 @@ public class ConnectedWaypoint : Point
         for (int i = 0; i < allWaypoints.Length; i++)
         {
             ConnectedWaypoint nextWaypoint = allWaypoints[i].GetComponent<ConnectedWaypoint>();
-
             // If a ConnectedPoint is found
             if (nextWaypoint != null)
             {

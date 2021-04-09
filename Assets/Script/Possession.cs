@@ -49,9 +49,9 @@ public class Possession : MonoBehaviour
         {
             gameObject.GetComponent<Movement>().enabled = false;
         }
-        Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation);
+        var newplayer = Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation) as GameObject;
         Identify();
-        Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
+        Camera.main.transform.position = new Vector3(newplayer.transform.position.x, Camera.main.transform.position.y, newplayer.transform.position.z);
         this.enabled = false;
         possessionTime = 0f;
         transform.position = startpos;

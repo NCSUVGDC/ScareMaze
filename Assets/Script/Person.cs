@@ -142,8 +142,8 @@ namespace Assets.Code
             // Restart and start Timer
             //detectionBar.alert = detectionBar.maxAlert;
             detectionBar.TimerOn = true;
-
-            if (lastLocation != null)
+            transform.LookAt(new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z));
+            /*if (lastLocation != null)
             {
                 // Look towards lastLocation
                 lastLocation = personSight.targetLastLocation.transform;
@@ -151,7 +151,7 @@ namespace Assets.Code
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
-            }
+            }*/
         }
 
         private void SetDestination()

@@ -29,6 +29,7 @@ public class Possession : MonoBehaviour
     public float radius = 3.0f;
     public GameObject player;
     public float height;
+
     // Update is called once per frame
     void Update()
     {

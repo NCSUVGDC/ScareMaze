@@ -6,6 +6,11 @@ public class Possessing : MonoBehaviour
 {
     public float radius = 3.0f;
     public LayerMask hide;
+
+    //On possesion effect variables
+    private ParticleSystem possessionFX;
+    private bool isPossesed = false;
+
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Q))
@@ -27,12 +32,14 @@ public class Possessing : MonoBehaviour
         //destroy player, and transfer to pumpkin
         Camera.main.transform.position = new Vector3(c.transform.position.x, Camera.main.transform.position.y, c.transform.position.z);
         Possession possession = c.gameObject.GetComponent<Possession>();
+        possessionFX = c.gameObject.GetComponentInChildren<ParticleSystem>();
         possession.enabled = true;
         possession.height = transform.position.y;
         if (possession.type == Possession.PossessionType.scarecrow)
         {
             c.gameObject.GetComponent<Movement>().enabled = true;
         }
+        possessionFX.Play();
         Destroy(gameObject);
     }
 }

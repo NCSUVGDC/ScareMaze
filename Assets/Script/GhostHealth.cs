@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GhostHealth : MonoBehaviour
 {
+    public Slider healthBar;
     public GameObject ghost;
     public float health = 100f;
     public float dps = 10f;
@@ -12,19 +14,18 @@ public class GhostHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBar.maxValue = health;
+        healthBar.value = health;
         lastHitTime = -damageCooldown;
-    }
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
     }
     public void takeDamage()
     {
         if (Time.time > damageCooldown + lastHitTime)
         {
-            print("ghost hit, remaining health: " + health);
+            //print("ghost hit, remaining health: " + health);
             health -= (dps * damageCooldown);
+            //displays ghost health
+            healthBar.value = health;
             if (health <= 0)
             {
                 print("ghost dead");

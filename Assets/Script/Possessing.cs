@@ -24,7 +24,10 @@ public class Possessing : MonoBehaviour
         Collider[] objects = Physics.OverlapSphere(center, radius, hide);
         if (objects.Length != 0)
         {
-            Hide(objects[0]);
+            if (objects[0].gameObject.GetComponent<Possession>().possessable)
+            {
+                Hide(objects[0]);
+            }
         }
     }
     private void Hide(Collider c)
@@ -33,7 +36,7 @@ public class Possessing : MonoBehaviour
         Camera.main.transform.position = new Vector3(c.transform.position.x, Camera.main.transform.position.y, c.transform.position.z);
         Possession possession = c.gameObject.GetComponent<Possession>();
         possessionFX = c.gameObject.GetComponentInChildren<ParticleSystem>();
-        possession.enabled = true;
+        possession.Possess();
         possession.height = transform.position.y;
         if (possession.type == Possession.PossessionType.scarecrow)
         {

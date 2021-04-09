@@ -8,20 +8,19 @@ public class Possession : MonoBehaviour
 {
     private Person person;
     public float timeLimit = 30.0f;
-    float possessionTime = 0f;
-    Vector3 startpos;
+    public ScarecrowBar scarecrowBar;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Possession>().enabled = false;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        startpos = transform.position;
     }
     public enum PossessionType
     {
         pumpkin,
         scarecrow
     }
+    [HideInInspector]
+    public bool possessable = true;
     public PossessionType type;
     private Collider[] objects;
     public LayerMask NPC;
@@ -29,21 +28,34 @@ public class Possession : MonoBehaviour
     public float radius = 3.0f;
     public GameObject player;
     public float height;
-
-    // Update is called once per frame
-    void Update()
+    bool possessed = false; 
+    public float waitTime = 5f;
+    public void Possess()
     {
-        if (type.Equals(PossessionType.scarecrow))
+        possessed = true;
+        if (type == PossessionType.scarecrow)
         {
-            possessionTime += Time.deltaTime;
-        }
-        if (Input.GetKeyUp(KeyCode.Space) || possessionTime >= timeLimit)
-        {
-            Exit();
+            scarecrowBar.StartTimer(timeLimit,true);
         }
     }
-    void Exit()
+    // Update is called once per frame
+    private void Update()
     {
+        if (possessed)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                possessed = false;
+                if (type.Equals(PossessionType.scarecrow))
+                    scarecrowBar.StopTimer();
+                Exit();
+            }
+        }
+    }
+
+    public void Exit()
+    {
+        possessed = false;
         //jump out of object, scare NPC, instantiate new player
         if (type.Equals(PossessionType.scarecrow))
         {
@@ -52,10 +64,11 @@ public class Possession : MonoBehaviour
         var newplayer = Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation) as GameObject;
         Identify();
         Camera.main.transform.position = new Vector3(newplayer.transform.position.x, Camera.main.transform.position.y, newplayer.transform.position.z);
-        this.enabled = false;
-        possessionTime = 0f;
-        transform.position = startpos;
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        if (type.Equals(PossessionType.scarecrow))
+        {
+            possessable = false;
+            scarecrowBar.StartTimer(waitTime,false);
+        }
     }
     void Identify()
     {

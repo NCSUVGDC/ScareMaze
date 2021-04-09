@@ -15663,6 +15663,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 8249515445251100316, guid: 940c61a6ab7ece74882c747cfe730bc0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249515445251100316, guid: 940c61a6ab7ece74882c747cfe730bc0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 940c61a6ab7ece74882c747cfe730bc0, type: 3}
 --- !u!1 &1216260477 stripped
@@ -20371,6 +20381,11 @@ PrefabInstance:
       propertyPath: timeLimit
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 93807621032717384, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: waitTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 93807621032717385, guid: 1700c4a657891d645942b4d3b4fd1d3f,
         type: 3}
       propertyPath: m_Name
@@ -20380,6 +20395,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100602191787597353, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100602191787597353, guid: 1700c4a657891d645942b4d3b4fd1d3f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1700c4a657891d645942b4d3b4fd1d3f, type: 3}

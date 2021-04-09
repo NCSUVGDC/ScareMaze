@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 7f;
     public int playersNum = 3;
     public int playersAlive = 3;
+    public bool paused = false;
+    public Canvas pauseCanvas;
+    public Canvas gameOverCanvas;
+    public Text gameOverText;
  
     
     // Update is called once per frame
@@ -24,6 +28,17 @@ public class GameManager : MonoBehaviour
             WinGame();
             Invoke("Restart", restartDelay);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void PlayerDeath()
@@ -33,19 +48,61 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        // UI - Ghost Wins
-        // Play Again and Quit
+        GameEnd(true);
     }
     
     public void LoseGame()
     {
         // UI - Ghost Loses
         // Play Again and Quit
-        Invoke("Restart", restartDelay);
+        GameEnd(false);
     }
 
-    void Restart()
+    public void Restart()
     {
+        gameOverCanvas.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Pause()
+    {
+        paused = true;
+        pauseCanvas.gameObject.SetActive(true);
+
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        pauseCanvas.gameObject.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public bool IsRunning()
+    {
+        return (paused || hasGameEnded);
+    }
+    //win is a bool saying whether the game was won or lost. win is true, lose is false
+    void GameEnd(bool win)
+    {
+        pauseCanvas.gameObject.SetActive(false);
+        string message;
+        if (win)
+        {
+            message = "You Win!";
+        }
+        else
+        {
+            message = "You Lose.";
+        }
+        gameOverCanvas.gameObject.SetActive(true);
+        gameOverText.text = message;
     }
 }

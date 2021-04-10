@@ -38,9 +38,12 @@ public class Possessing : MonoBehaviour
         possessionFX = c.gameObject.GetComponentInChildren<ParticleSystem>();
         possession.Possess();
         possession.height = transform.position.y;
+        possession.enabled = true;
         if (possession.type == Possession.PossessionType.scarecrow)
         {
             c.gameObject.GetComponent<Movement>().enabled = true;
+            c.gameObject.GetComponent<Animator>().SetBool("isPossesed", true);
+            //c.gameObject.transform.Find("ScarePost").transform.SetParent(null);
         }
         possessionFX.Play();
         Destroy(gameObject);

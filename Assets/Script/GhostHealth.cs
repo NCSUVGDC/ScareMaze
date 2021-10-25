@@ -7,14 +7,16 @@ public class GhostHealth : MonoBehaviour
 {
     public Slider healthBar;
     public GameObject ghost;
-    public float health = 100f;
+    public static float baseHealth = 20f;
+    [HideInInspector] public float health = 0f;
     public float dps = 10f;
     public float damageCooldown = .1f;
     private float lastHitTime;
     // Start is called before the first frame update
     void Start()
     {
-        healthBar.maxValue = health;
+        healthBar.maxValue = baseHealth;
+        health = baseHealth;
         healthBar.value = health;
         lastHitTime = -damageCooldown;
     }

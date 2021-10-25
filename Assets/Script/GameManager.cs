@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         paused = true;
+        Time.timeScale = 0;
         pauseCanvas.gameObject.SetActive(true);
 
     }
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         paused = false;
+        Time.timeScale = 1;
         pauseCanvas.gameObject.SetActive(false);
     }
 

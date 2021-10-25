@@ -6,16 +6,17 @@ using UnityEngine;
 
 public class Possession : MonoBehaviour
 {
-    private Person person;
     public float timeLimit = 30.0f;
     public ScarecrowBar scarecrowBar;
     float possessionTime = 0f;
     Vector3 startpos;
     Quaternion startrot;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Ghost");
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         startpos = transform.position;
         startrot = transform.rotation;
@@ -33,10 +34,10 @@ public class Possession : MonoBehaviour
     public LayerMask NPC;
     public LayerMask block;
     public float radius = 3.0f;
-    public GameObject player;
     public float height;
     bool possessed = false; 
     public float waitTime = 5f;
+    [HideInInspector] public float playerHealth;
     public void Possess()
     {
         possessed = true;
@@ -71,9 +72,12 @@ public class Possession : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("isPossesed", false);
             transform.rotation = Quaternion.identity;
         }
-        var newplayer = Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation) as GameObject;
-        Identify();
+        player.transform.position = new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z);
+        player.transform.rotation = transform.rotation;
         Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
+        player.SetActive(true);
+        Identify();
+
         this.enabled = false;
         possessionTime = 0f;
         transform.position = startpos;

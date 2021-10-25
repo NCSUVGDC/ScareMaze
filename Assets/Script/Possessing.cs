@@ -39,6 +39,7 @@ public class Possessing : MonoBehaviour
         possession.Possess();
         possession.height = transform.position.y;
         possession.enabled = true;
+        possession.playerHealth = GetComponent<GhostHealth>().health;
         if (possession.type == Possession.PossessionType.scarecrow)
         {
             c.gameObject.GetComponent<Movement>().enabled = true;
@@ -46,6 +47,6 @@ public class Possessing : MonoBehaviour
             //c.gameObject.transform.Find("ScarePost").transform.SetParent(null);
         }
         possessionFX.Play();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

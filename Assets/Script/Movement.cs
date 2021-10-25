@@ -7,10 +7,16 @@ public class Movement : MonoBehaviour
     //code for basic movement and to enter possession state
     public Rigidbody player;
     public int speed = 5;
+    public int dashSpeed = 15;
+    private Vector3 currentDir;
+    public float dashTimer = 0f;
+    public float dashDuration = .3f;
+    private bool dashing = false;
+
 
     //array of objects player can sense
     //private Collider[] objects;
-    
+
     private Animator animator;
     private ParticleSystem ectoplasm;
     private bool moving = false;
@@ -42,32 +48,82 @@ public class Movement : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, rotation, 0);
         //}
         //top lines are movement relative to ghost direction, bottom are constants
+
+        dashTimer -= Time.deltaTime;
+        //Try to dash first if able (only for ghost)
+        if (dashing && gameObject.CompareTag("Ghost")) 
+        {
+            dashDuration -= Time.deltaTime;
+            player.position += currentDir * dashSpeed * Time.deltaTime;
+            Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
+            if (dashDuration < 0) {
+                dashDuration = .3f;
+                dashing = false;
+            }
+        }
         //move forward
-        if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
         {
             //player.position += transform.forward * speed * Time.deltaTime;
-            Move(moveUp);
+            currentDir = moveUp;
+            if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
+            {
+                dashTimer = 1f;
+                dashing = true;
+            }
+            else
+            {
+                Move();
+            }
+
             animator.SetBool("isMoving", true);
         }
         //move backward
         else if (Input.GetKey(KeyCode.S))
         {
             //player.position += -transform.forward * speed * Time.deltaTime;
-            Move(-moveUp);
+            currentDir = -moveUp;
+            if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
+            {
+                dashTimer = 1f;
+                dashing = true;
+            }
+            else
+            {
+                Move();
+            }
             animator.SetBool("isMoving", true);
         }
         //strafe right
         else if (Input.GetKey(KeyCode.D))
         {
             //player.position += transform.right * speed*Time.deltaTime;
-            Move(moveRight);
+            currentDir = moveRight;
+            if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
+            {
+                dashTimer = 1f;
+                dashing = true;
+            }
+            else
+            {
+                Move();
+            }
             animator.SetBool("isMoving", true);
         }
         //strafe left
         else if (Input.GetKey(KeyCode.A))
         {
             //player.position += -transform.right * speed*Time.deltaTime;
-            Move(-moveRight);
+            currentDir = -moveRight;
+            if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
+            {
+                dashTimer = 1f;
+                dashing = true;
+            }
+            else
+            {
+                Move();
+            }
             animator.SetBool("isMoving", true);
         }
         else {
@@ -77,22 +133,25 @@ public class Movement : MonoBehaviour
             moving = false;
         }
     }
-    void Move(Vector3 dir)
+
+    void Move()
     {
         //move player and camera
         //Camera.main.transform.position += dir * speed * Time.deltaTime;
 
-        if (!moving) {
+        if (!moving) 
+        {
             ectoplasm.Play();
             moving = true;
         }
 
         //Lerp player to move direction
-        float rotation = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        float rotation = Mathf.Atan2(currentDir.x, currentDir.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, rotation, 0), Time.deltaTime * speed);
 
         //Move player
-        player.position += dir * speed * Time.deltaTime;
+        player.position += currentDir * speed * Time.deltaTime;
         Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
     }
+
 }

@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 4682108993330693408}
   - component: {fileID: 4682108993330693411}
   - component: {fileID: 4682108993330693410}
-  - component: {fileID: 4682108993330693437}
   - component: {fileID: 4682108993330693436}
   - component: {fileID: 4682108993330693439}
   - component: {fileID: 4682108993234864526}
@@ -148,6 +147,7 @@ GameObject:
   - component: {fileID: 4682108993330693433}
   - component: {fileID: 4682108993330693432}
   - component: {fileID: 1217188632327414040}
+  - component: {fileID: 2786400817932260288}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Ghost
@@ -220,19 +220,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &4682108993330693437
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682108993330693435}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &4682108993330693436
 CharacterController:
   m_ObjectHideFlags: 0
@@ -296,6 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4682108993330693432}
   speed: 5
+  dashSpeed: 15
+  dashTimer: 0
+  dashDuration: 0.3
   radius: 3
   hide:
     serializedVersion: 2
@@ -351,6 +341,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &2786400817932260288
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4682108993330693435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5341294730643191648
 GameObject:
   m_ObjectHideFlags: 0
@@ -5532,7 +5536,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScareGhost
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 02255573a8bbff742b29c6e47a7f5729, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02255573a8bbff742b29c6e47a7f5729, type: 3}
 --- !u!4 &9131785632019593505 stripped
 Transform:

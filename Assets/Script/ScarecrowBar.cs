@@ -15,7 +15,7 @@ public class ScarecrowBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scarecrowCanvas = GetComponent<Canvas>();
+        scarecrowCanvas = GetComponentInChildren<Canvas>();
         scarecrowCanvas.enabled = false;
     }
 

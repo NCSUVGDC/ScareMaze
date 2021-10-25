@@ -9,10 +9,17 @@ public class Possession : MonoBehaviour
     private Person person;
     public float timeLimit = 30.0f;
     public ScarecrowBar scarecrowBar;
+    float possessionTime = 0f;
+    Vector3 startpos;
+    Quaternion startrot;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        startpos = transform.position;
+        startrot = transform.rotation;
+        scarecrowBar = gameObject.GetComponent<ScarecrowBar>();
     }
     public enum PossessionType
     {
@@ -60,15 +67,18 @@ public class Possession : MonoBehaviour
         if (type.Equals(PossessionType.scarecrow))
         {
             gameObject.GetComponent<Movement>().enabled = false;
+            gameObject.GetComponent<Animator>().SetBool("isMoving", false);
+            gameObject.GetComponent<Animator>().SetBool("isPossesed", false);
+            transform.rotation = Quaternion.identity;
         }
         var newplayer = Instantiate(player, new Vector3(transform.position.x + transform.forward.x, height, transform.position.z + transform.forward.z), transform.rotation) as GameObject;
         Identify();
-        Camera.main.transform.position = new Vector3(newplayer.transform.position.x, Camera.main.transform.position.y, newplayer.transform.position.z);
-        if (type.Equals(PossessionType.scarecrow))
-        {
-            possessable = false;
-            scarecrowBar.StartTimer(waitTime,false);
-        }
+        Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, player.transform.position.z);
+        this.enabled = false;
+        possessionTime = 0f;
+        transform.position = startpos;
+        transform.rotation = startrot;
+        //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
     void Identify()
     {

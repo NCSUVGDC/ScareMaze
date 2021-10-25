@@ -88,49 +88,51 @@ namespace Assets.Code
 
         private void Update()
         {
-            // Animations
-            animator.SetFloat("movementSpeed", agent.velocity.magnitude);
-            animator.SetBool("ghostSpotted", agent.isStopped);
-
-            if (!personSight.ghostSpotted)
+            if (agent.isActiveAndEnabled)
             {
-                agent.isStopped = false;
-                lastLocation = null;
-
-                // Check if close to destination
-                if (traveling && agent.remainingDistance <= 1.0f)
+                // Animations
+                animator.SetFloat("movementSpeed", agent.velocity.magnitude);
+                animator.SetBool("ghostSpotted", agent.isStopped);
+                if (!personSight.ghostSpotted)
                 {
-                    traveling = false;
-                    pointsVisited++;
+                    agent.isStopped = false;
+                    lastLocation = null;
 
-                    // Wait if waiting
-                    if (patrolWaiting)
+                    // Check if close to destination
+                    if (traveling && agent.remainingDistance <= 1.0f)
                     {
-                        waiting = true;
-                        waitTimer = 0f;
-                    }
-                    else
-                    {
-                        SetDestination();
+                        traveling = false;
+                        pointsVisited++;
+
+                        // Wait if waiting
+                        if (patrolWaiting)
+                        {
+                            waiting = true;
+                            waitTimer = 0f;
+                        }
+                        else
+                        {
+                            SetDestination();
+                        }
+
                     }
 
+                    // Instead, if we're waiting
+                    if (waiting)
+                    {
+                        waitTimer += Time.deltaTime;
+                        if (waitTimer >= waitTime)
+                        {
+                            waiting = false;
+
+                            SetDestination();
+                        }
+                    }
                 }
-
-                // Instead, if we're waiting
-                if (waiting)
+                else
                 {
-                    waitTimer += Time.deltaTime;
-                    if (waitTimer >= waitTime)
-                    {
-                        waiting = false;
-
-                        SetDestination();
-                    }
+                    GhostSeen();
                 }
-            }
-            else
-            {
-                GhostSeen();
             }
         }
 

@@ -30,6 +30,8 @@ public class ConnectedWaypoint : Point
                 }
             }
         }
+        if (connections.Count == 0)
+            Debug.Log(name);
     }
 
     public override void OnDrawGizmos()

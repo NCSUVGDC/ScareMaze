@@ -66,6 +66,10 @@ public class Movement : MonoBehaviour
         {
             //player.position += transform.forward * speed * Time.deltaTime;
             currentDir = moveUp;
+            if (Input.GetKey(KeyCode.A))
+                currentDir -= moveRight;
+            else if (Input.GetKey(KeyCode.D))
+                currentDir += moveRight;
             if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
             {
                 dashTimer = 1f;
@@ -83,6 +87,10 @@ public class Movement : MonoBehaviour
         {
             //player.position += -transform.forward * speed * Time.deltaTime;
             currentDir = -moveUp;
+            if (Input.GetKey(KeyCode.A))
+                currentDir -= moveRight;
+            else if (Input.GetKey(KeyCode.D))
+                currentDir += moveRight;
             if (Input.GetKey(KeyCode.LeftShift) && dashTimer < 0 && !dashing)
             {
                 dashTimer = 1f;
@@ -136,6 +144,7 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
+        currentDir.Normalize();
         //move player and camera
         //Camera.main.transform.position += dir * speed * Time.deltaTime;
 
